@@ -8,7 +8,7 @@ placa=['placa_q.jpg',
        'placa_3.jpg',
        'placa_4.jpg']
 
-reader = easyocr.Reader(['en'], gpu=True)
+reader = easyocr.Reader(['en'], gpu=False)
 
 def procesar_imagenes(lista):
 
@@ -37,7 +37,12 @@ for lista in placa:
     # Aplicar OCR sobre la imagen original
     resultado = reader.readtext(img_original)
 
-    print(f"\Texto de placa: {cont}:")
+    print(f"Texto de placa: {cont}")
     for _, texto, _ in resultado:
       print("-", texto)
+
+    #Contador para detener el programa despues de leer las imagenes
+    if cont==4: 
+        break
     cont +=1
+    
